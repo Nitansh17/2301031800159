@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artist's Studio Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+  <link rel="stylesheet" href="Page-2.css">
+</head>
+<body>
+  <main
+    x-data="{
+      activeTab: 'orders',
+      orders: [
+        {id: 1, title: 'Handcrafted Vase', status: 'In Progress', date: 'Dec 12', price: '$129'},
+        {id: 2, title: 'Ceramic Bowl Set', status: 'Shipped', date: 'Dec 10', price: '$89'},
+        {id: 3, title: 'Wooden Sculpture', status: 'Completed', date: 'Dec 8', price: '$299'}
+      ],
+      collections: [
+        {id: 1, title: 'Winter Collection', items: 12, image: 'https://placehold.co/120x120'},
+        {id: 2, title: 'Nature Inspired', items: 8, image: 'https://placehold.co/120x120'},
+        {id: 3, title: 'Abstract Series', items: 15, image: 'https://placehold.co/120x120'}
+      ],
+      recommendations: [
+        {id: 1, title: 'Pottery Workshop', type: 'Course', price: '$199', image: 'https://placehold.co/200x150'},
+        {id: 2, title: 'Canvas Set', type: 'Materials', price: '$89', image: 'https://placehold.co/200x150'},
+        {id: 3, title: 'Sculpting Tools', type: 'Tools', price: '$149', image: 'https://placehold.co/200x150'}
+      ],
+      toggleTab(tab) {
+        this.activeTab = tab;
+      }
+    }"
+    class="studio-dashboard"
+  >
+    <div class="dashboard-container">
+      <div class="dashboard-layout">
+        <aside class="sidebar">
+          <div class="profile-card">
+            <header class="profile-header">
+              <img
+                src="https://placehold.co/64x64"
+                alt="Profile"
+                class="profile-image"
+              />
+              <div class="profile-info">
+                <h1 class="profile-title">Artist's Studio</h1>
+                <p class="profile-subtitle">Welcome back!</p>
+              </div>
+            </header>
+            <nav class="navigation">
+              <button
+                x-on:click="toggleTab('orders')"
+                x-bind:style="{ background: activeTab === 'orders' ? '#F9F6F3' : 'transparent', color: activeTab === 'orders' ? '#5A4434' : '#C4946A' }"
+                class="nav-button"
+                aria-pressed="true"
+                x-bind:aria-pressed="activeTab === 'orders'"
+              >
+                <svg
+                  class="nav-icon"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"
+                  ></path>
+                </svg>
+                <span>Orders</span>
+              </button>
+              <button
+                x-on:click="toggleTab('collections')"
+                x-bind:style="{ background: activeTab === 'collections' ? '#F9F6F3' : 'transparent', color: activeTab === 'collections' ? '#5A4434' : '#C4946A' }"
+                class="nav-button"
+                aria-pressed="false"
+                x-bind:aria-pressed="activeTab === 'collections'"
+              >
+                <svg
+                  class="nav-icon"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"
+                  ></path>
+                </svg>
+                <span>Collections</span>
+              </button>
+              <button
+                x-on:click="toggleTab('discover')"
+                x-bind:style="{ background: activeTab === 'discover' ? '#F9F6F3' : 'transparent', color: activeTab === 'discover' ? '#5A4434' : '#C4946A' }"
+                class="nav-button"
+                aria-pressed="false"
+                x-bind:aria-pressed="activeTab === 'discover'"
+              >
+                <svg
+                  class="nav-icon"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M12 10.9c-.61 0-1.1.49-1.1 1.1s.49 1.1 1.1 1.1c.61 0 1.1-.49 1.1-1.1s-.49-1.1-1.1-1.1zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.19 12.19L6 18l3.81-8.19L18 6l-3.81 8.19z"
+                  ></path>
+                </svg>
+                <span>Discover</span>
+              </button>
+            </nav>
+          </div>
+        </aside>
+        <div class="content-area">
+          <section
+            x-show="activeTab === 'orders'"
+            class="orders-section"
+          >
+            <h2 class="section-title">Recent Orders</h2>
+            <div class="orders-list">
+              <template x-for="order in orders" :key="order.id">
+                <article class="order-card">
+                  <div class="order-info">
+                    <h3 class="order-title" x-text="order.title"></h3>
+                    <p class="order-status" x-text="order.status"></p>
+                  </div>
+                  <div class="order-meta">
+                    <p class="order-date" x-text="order.date"></p>
+                    <p class="order-price" x-text="order.price"></p>
+                  </div>
+                </article>
+              </template>
+            </div>
+          </section>
+          <section
+            x-show="activeTab === 'collections'"
+            class="collections-section"
+          >
+            <template x-for="collection in collections" :key="collection.id">
+              <article class="collection-card">
+                <img :src="collection.image" :alt="collection.title" class="collection-image">
+                <div class="collection-info">
+                  <h3 class="collection-title" x-text="collection.title"></h3>
+                  <p class="collection-items" x-text="collection.items + ' items'"></p>
+                </div>
+              </article>
+            </template>
+          </section>
+          <section
+            x-show="activeTab === 'discover'"
+            class="discover-section"
+          >
+            <template x-for="item in recommendations" :key="item.id">
+              <article class="recommendation-card">
+                <img :src="item.image" :alt="item.title" class="recommendation-image">
+                <div class="recommendation-info">
+                  <span class="recommendation-type" x-text="item.type"></span>
+                  <h3 class="recommendation-title" x-text="item.title"></h3>
+                  <p class="recommendation-price" x-text="item.price"></p>
+                </div>
+              </article>
+            </template>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

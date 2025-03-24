@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout - Artisan Crafts</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Page-9.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body>
+    <main
+      x-data="{
+      step: 1,
+      formData: {
+        shipping: { name: '', email: '', address: '', city: '', state: '', zip: '', country: '' },
+        billing: { name: '', address: '', city: '', state: '', zip: '', country: '' },
+        payment: { type: 'card', cardNumber: '', expiry: '', cvv: '' },
+        sameAsShipping: true
+      },
+      cart: [
+        { id: 1, name: 'Handcrafted Celadon Vase', artist: 'Clara Woods', price: 289, quantity: 1, image: 'https://placehold.co/120x120' },
+        { id: 2, name: 'Ceramic Tea Set', artist: 'James Miller', price: 245, quantity: 1, image: 'https://placehold.co/120x120' }
+      ],
+      validateStep() {
+        if(this.step === 1) {
+          if(!this.formData.shipping.name || !this.formData.shipping.email || !this.formData.shipping.address || !this.formData.shipping.city || !this.formData.shipping.state || !this.formData.shipping.zip) {
+            return false;
+          }
+        }
+        return true;
+      },
+      nextStep() {
+        if(this.validateStep()) {
+          this.step++;
+        }
+      },
+      calculateSubtotal() {
+        return this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      },
+      calculateShipping() {
+        return 15;
+      },
+      calculateTotal() {
+        return this.calculateSubtotal() + this.calculateShipping();
+      }
+    }"
+      class="checkout-page"
+    >
+      <div class="container">
+        <header class="checkout-header">
+          <h1 class="page-title">Crafting Your Order</h1>
+          <div class="step-indicators">
+            <template x-for="i in 3">
+              <div
+                class="step-indicator"
+                :class="{'active': step >= i, 'completed': step > i}"
+              ></div>
+            </template>
+          </div>
+        </header>
+
+        <div class="checkout-content">
+          <section class="checkout-form">
+            <!-- Shipping Details Step -->
+            <article x-show="step === 1" class="form-card">
+              <h2 class="section-title">Shipping Details</h2>
+              <form class="form-grid">
+                <div class="form-group full-width">
+                  <label for="shipping-name" class="form-label"
+                    >Full Name</label
+                  >
+                  <input
+                    id="shipping-name"
+                    x-model="formData.shipping.name"
+                    type="text"
+                    class="form-input"
+                  />
+                </div>
+                <div class="form-group full-width">
+                  <label for="shipping-email" class="form-label">Email</label>
+                  <input
+                    id="shipping-email"
+                    x-model="formData.shipping.email"
+                    type="email"
+                    class="form-input"
+                  />
+                </div>
+                <div class="form-group full-width">
+                  <label for="shipping-address" class="form-label"
+                    >Address</label
+                  >
+                  <input
+                    id="shipping-address"
+                    x-model="formData.shipping.address"
+                    type="text"
+                    class="form-input"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="shipping-city" class="form-label">City</label>
+                  <input
+                    id="shipping-city"
+                    x-model="formData.shipping.city"
+                    type="text"
+                    class="form-input"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="shipping-state" class="form-label">State</label>
+                  <input
+                    id="shipping-state"
+                    x-model="formData.shipping.state"
+                    type="text"
+                    class="form-input"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="shipping-zip" class="form-label">ZIP Code</label>
+                  <input
+                    id="shipping-zip"
+                    x-model="formData.shipping.zip"
+                    type="text"
+                    class="form-input"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="shipping-country" class="form-label"
+                    >Country</label
+                  >
+                  <input
+                    id="shipping-country"
+                    x-model="formData.shipping.country"
+                    type="text"
+                    class="form-input"
+                  />
+                </div>
+              </form>
+            </article>
+
+            <!-- Payment Method Step -->
+            <article x-show="step === 2" class="form-card">
+              <h2 class="section-title">Payment Method</h2>
+              <div class="payment-options">
+                <label class="payment-option">
+                  <input
+                    type="radio"
+                    x-model="formData.payment.type"
+                    value="card"
+                    class="payment-radio"
+                  />
+                  <div class="payment-details">
+                    <p class="payment-title">Credit Card</p>
+                    <p class="payment-description">Secure payment processing</p>
+                  </div>
+                </label>
+                <label class="payment-option">
+                  <input
+                    type="radio"
+                    x-model="formData.payment.type"
+                    value="paypal"
+                    class="payment-radio"
+                  />
+                  <div class="payment-details">
+                    <p class="payment-title">PayPal</p>
+                    <p class="payment-description">Fast and secure checkout</p>
+                  </div>
+                </label>
+              </div>
+              <div
+                x-show="formData.payment.type === 'card'"
+                class="card-details"
+              >
+                <div class="form-grid">
+                  <div class="form-group full-width">
+                    <label for="card-number" class="form-label"
+                      >Card Number</label
+                    >
+                    <input
+                      id="card-number"
+                      x-model="formData.payment.cardNumber"
+                      type="text"
+                      class="form-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="card-expiry" class="form-label"
+                      >Expiry Date</label
+                    >
+                    <input
+                      id="card-expiry"
+                      x-model="formData.payment.expiry"
+                      type="text"
+                      placeholder="MM/YY"
+                      class="form-input"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="card-cvv" class="form-label">CVV</label>
+                    <input
+                      id="card-cvv"
+                      x-model="formData.payment.cvv"
+                      type="text"
+                      class="form-input"
+                    />
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Order Confirmation Step -->
+            <article x-show="step === 3" class="form-card">
+              <div class="confirmation-message">
+                <svg class="confirmation-icon" viewBox="0 0 24 24">
+                  <path
+                    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                  ></path>
+                </svg>
+                <h2 class="confirmation-title">Order Confirmed!</h2>
+                <p class="confirmation-text">
+                  Thank you for supporting artisan craftsmanship
+                </p>
+              </div>
+            </article>
+          </section>
+
+          <aside class="order-summary">
+            <h2 class="section-title">Order Summary</h2>
+            <div class="cart-items">
+              <template x-for="item in cart" :key="item.id">
+                <div class="cart-item">
+                  <img :src="item.image" :alt="item.name" class="item-image" />
+                  <div class="item-details">
+                    <h3 class="item-name" x-text="item.name"></h3>
+                    <p class="item-artist" x-text="item.artist"></p>
+                    <div class="item-price-qty">
+                      <span class="item-price"
+                        >$<span x-text="item.price"></span
+                      ></span>
+                      <span class="item-quantity"
+                        >Qty: <span x-text="item.quantity"></span
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </div>
+            <div class="order-totals">
+              <div class="total-row">
+                <span class="total-label">Subtotal</span>
+                <span class="total-value"
+                  >$<span x-text="calculateSubtotal()"></span
+                ></span>
+              </div>
+              <div class="total-row">
+                <span class="total-label">Shipping</span>
+                <span class="total-value"
+                  >$<span x-text="calculateShipping()"></span
+                ></span>
+              </div>
+              <div class="total-row grand-total">
+                <span class="total-label">Total</span>
+                <span class="total-value"
+                  >$<span x-text="calculateTotal()"></span
+                ></span>
+              </div>
+            </div>
+            <button
+              x-show="step < 3"
+              x-on:click="nextStep()"
+              class="checkout-button"
+              x-text="step === 1 ? 'Continue to Payment' : 'Complete Order'"
+            ></button>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

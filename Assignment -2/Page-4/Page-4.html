@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artisan Categories</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Crimson Text", serif;
+      }
+
+      .category-card {
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .category-card:hover {
+        transform: translateY(-8px);
+      }
+
+      .category-texture {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .category-card:hover .category-texture {
+        opacity: 0.2;
+      }
+    </style>
+  </head>
+  <body>
+    <main
+      x-data="{
+      categories: [
+        {
+          id: 1,
+          name: 'Pottery',
+          description: 'Hand-thrown ceramics & earthenware',
+          artisans: 48,
+          color: '#C4946A',
+          image: 'https://placehold.co/400x300?text=Pottery',
+          texture: 'https://placehold.co/400x300?text=Pottery+Texture'
+        },
+        {
+          id: 2,
+          name: 'Woodworking',
+          description: 'Carved & crafted wooden pieces',
+          artisans: 36,
+          color: '#8B5E3C',
+          image: 'https://placehold.co/400x300?text=Woodworking',
+          texture: 'https://placehold.co/400x300?text=Wood+Texture'
+        },
+        {
+          id: 3,
+          name: 'Textiles',
+          description: 'Woven & embroidered fabrics',
+          artisans: 52,
+          color: '#D4B69C',
+          image: 'https://placehold.co/400x300?text=Textiles',
+          texture: 'https://placehold.co/400x300?text=Textile+Texture'
+        },
+        {
+          id: 4,
+          name: 'Glass Art',
+          description: 'Blown & stained glass creations',
+          artisans: 29,
+          color: '#A67B58',
+          image: 'https://placehold.co/400x300?text=Glass',
+          texture: 'https://placehold.co/400x300?text=Glass+Texture'
+        },
+        {
+          id: 5,
+          name: 'Jewelry',
+          description: 'Handcrafted metal & gemstone pieces',
+          artisans: 63,
+          color: '#E5D5C5',
+          image: 'https://placehold.co/400x300?text=Jewelry',
+          texture: 'https://placehold.co/400x300?text=Jewelry+Texture'
+        },
+        {
+          id: 6,
+          name: 'Paintings',
+          description: 'Original artwork & illustrations',
+          artisans: 71,
+          color: '#5A4434',
+          image: 'https://placehold.co/400x300?text=Paintings',
+          texture: 'https://placehold.co/400x300?text=Paint+Texture'
+        }
+      ],
+      hoveredCategory: null
+    }"
+      class="min-h-screen w-screen bg-[#F9F6F3] font-[Crimson_Text] p-[32px]"
+    >
+      <section class="max-w-[1400px] mx-auto">
+        <header class="text-center mb-[64px]">
+          <h1 class="text-[48px] font-semibold text-[#5A4434] mb-[16px]">
+            Artisan Categories
+          </h1>
+          <p class="text-[20px] text-[#C4946A]">
+            Discover unique creations from our skilled craftspeople
+          </p>
+        </header>
+
+        <div
+          class="grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-[32px]"
+        >
+          <template x-for="category in categories" :key="category.id">
+            <article
+              class="category-card rounded-lg overflow-hidden shadow-lg h-[400px]"
+              :style="`background-color: ${category.color}`"
+              @mouseenter="hoveredCategory = category.id"
+              @mouseleave="hoveredCategory = null"
+            >
+              <div
+                class="category-texture"
+                :style="`background-image: url('${category.texture}')`"
+              ></div>
+              <div class="relative h-[200px] overflow-hidden">
+                <img
+                  :src="category.image"
+                  :alt="category.name"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-[24px] text-white">
+                <h2
+                  class="text-[28px] font-semibold mb-[8px]"
+                  x-text="category.name"
+                ></h2>
+                <p
+                  class="text-[18px] mb-[16px] opacity-90"
+                  x-text="category.description"
+                ></p>
+                <div class="flex items-center justify-between">
+                  <span
+                    class="text-[16px]"
+                    x-text="`${category.artisans} Artisans`"
+                  ></span>
+                  <a href="#" class="text-[16px] underline">Explore</a>
+                </div>
+              </div>
+            </article>
+          </template>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

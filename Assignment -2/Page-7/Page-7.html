@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artisan Profile - Clara Woods</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="Page-7.css" />
+  </head>
+  <body>
+    <main
+      x-data="{
+      artisan: {
+        name: 'Clara Woods',
+        title: 'Master Ceramicist',
+        location: 'Portland, Oregon',
+        years: 15,
+        bio: 'Specializing in traditional Japanese pottery techniques with a modern twist. Each piece tells a story of dedication to craft and respect for ancient traditions.',
+        achievements: ['Featured in Ceramic Arts Monthly', 'Best in Show - Portland Artisan Fair 2023', 'Master Class Instructor at Clay Academy'],
+        skills: ['Wheel Throwing', 'Glaze Chemistry', 'Raku Firing', 'Hand Building'],
+        gallery: [
+          {id: 1, title: 'Celadon Vase Collection', image: 'https://placehold.co/600x400', price: '$289'},
+          {id: 2, title: 'Tea Ceremony Set', image: 'https://placehold.co/600x400', price: '$425'},
+          {id: 3, title: 'Sculptural Wall Pieces', image: 'https://placehold.co/600x400', price: '$350'}
+        ],
+        workshops: [
+          {id: 1, title: 'Beginning Wheel Throwing', date: 'March 15, 2024', spots: 8, price: '$195'},
+          {id: 2, title: 'Glaze Development', date: 'April 2, 2024', spots: 6, price: '$245'}
+        ],
+        testimonials: [
+          {id: 1, name: 'Sarah Chen', text: 'Clara\'s attention to detail and deep knowledge of ceramics made the workshop an incredible learning experience.', rating: 5},
+          {id: 2, name: 'Michael Torres', text: 'The tea set I commissioned exceeded all expectations. True craftsmanship at its finest.', rating: 5}
+        ]
+      },
+      activeSection: 'story',
+      hoveredWork: null
+    }"
+      class="artisan-profile"
+    >
+      <header class="profile-header">
+        <div class="header-background"></div>
+        <div class="header-content">
+          <div class="profile-info">
+            <figure class="profile-image">
+              <img
+                src="https://placehold.co/200x200"
+                alt="Clara Woods"
+                class="image-cover"
+              />
+            </figure>
+            <div class="artisan-details">
+              <h1 class="artisan-name" x-text="artisan.name"></h1>
+              <div class="artisan-subtitle">
+                <span class="artisan-title" x-text="artisan.title"></span>
+                <span class="separator-dot"></span>
+                <span class="artisan-location" x-text="artisan.location"></span>
+              </div>
+              <p
+                class="experience-years"
+                x-text="artisan.years + ' Years of Artisan Experience'"
+              ></p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <nav class="section-navigation">
+        <div class="nav-container">
+          <ul class="nav-tabs">
+            <li>
+              <button
+                x-on:click="activeSection = 'story'"
+                x-bind:class="{ 'active': activeSection === 'story' }"
+                class="nav-tab"
+              >
+                Artisan Story
+              </button>
+            </li>
+            <li>
+              <button
+                x-on:click="activeSection = 'gallery'"
+                x-bind:class="{ 'active': activeSection === 'gallery' }"
+                class="nav-tab"
+              >
+                Gallery
+              </button>
+            </li>
+            <li>
+              <button
+                x-on:click="activeSection = 'workshops'"
+                x-bind:class="{ 'active': activeSection === 'workshops' }"
+                class="nav-tab"
+              >
+                Workshops
+              </button>
+            </li>
+            <li>
+              <button
+                x-on:click="activeSection = 'testimonials'"
+                x-bind:class="{ 'active': activeSection === 'testimonials' }"
+                class="nav-tab"
+              >
+                Testimonials
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="content-section">
+        <!-- Story Section -->
+        <div x-show="activeSection === 'story'" class="story-section">
+          <div class="story-column">
+            <article class="content-card">
+              <h2 class="card-title">The Journey</h2>
+              <p class="bio-text" x-text="artisan.bio"></p>
+            </article>
+            <article class="content-card">
+              <h2 class="card-title">Achievements</h2>
+              <ul class="achievements-list">
+                <template x-for="achievement in artisan.achievements">
+                  <li class="achievement-item">
+                    <span class="achievement-text" x-text="achievement"></span>
+                  </li>
+                </template>
+              </ul>
+            </article>
+          </div>
+          <article class="content-card skills-card">
+            <h2 class="card-title">Mastered Skills</h2>
+            <div class="skills-grid">
+              <template x-for="skill in artisan.skills">
+                <div class="skill-item">
+                  <span class="skill-name" x-text="skill"></span>
+                </div>
+              </template>
+            </div>
+          </article>
+        </div>
+
+        <!-- Gallery Section -->
+        <div x-show="activeSection === 'gallery'" class="gallery-section">
+          <template x-for="work in artisan.gallery">
+            <article
+              class="gallery-item"
+              x-on:mouseenter="hoveredWork = work.id"
+              x-on:mouseleave="hoveredWork = null"
+            >
+              <figure class="gallery-image">
+                <img :src="work.image" :alt="work.title" class="image-cover" />
+              </figure>
+              <div class="gallery-details">
+                <h3 class="gallery-title" x-text="work.title"></h3>
+                <p class="gallery-price" x-text="work.price"></p>
+              </div>
+            </article>
+          </template>
+        </div>
+
+        <!-- Workshops Section -->
+        <div x-show="activeSection === 'workshops'" class="workshops-section">
+          <template x-for="workshop in artisan.workshops">
+            <article class="workshop-card">
+              <h3 class="workshop-title" x-text="workshop.title"></h3>
+              <div class="workshop-details">
+                <p class="workshop-date" x-text="workshop.date"></p>
+                <p
+                  class="workshop-spots"
+                  x-text="workshop.spots + ' spots available'"
+                ></p>
+                <p class="workshop-price" x-text="workshop.price"></p>
+              </div>
+              <button class="register-button">Register Now</button>
+            </article>
+          </template>
+        </div>
+
+        <!-- Testimonials Section -->
+        <div
+          x-show="activeSection === 'testimonials'"
+          class="testimonials-section"
+        >
+          <template x-for="testimonial in artisan.testimonials">
+            <article class="testimonial-card">
+              <div class="testimonial-rating">
+                <template x-for="i in 5">
+                  <span
+                    class="star"
+                    x-bind:class="{ 'filled': i <= testimonial.rating }"
+                    >★</span
+                  >
+                </template>
+              </div>
+              <blockquote
+                class="testimonial-text"
+                x-text="testimonial.text"
+              ></blockquote>
+              <footer class="testimonial-author">
+                <cite x-text="testimonial.name"></cite>
+              </footer>
+            </article>
+          </template>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

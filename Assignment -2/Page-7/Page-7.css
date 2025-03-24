@@ -1,0 +1,389 @@
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Crimson Text", serif;
+    background-color: #f9f6f3;
+    color: #5a4434;
+  }
+  
+  .artisan-profile {
+    min-height: 100vh;
+    width: 100%;
+  }
+  
+  /* Header Styles */
+  .profile-header {
+    position: relative;
+    height: 500px;
+    background-color: #5a4434;
+    overflow: hidden;
+  }
+  
+  .header-background {
+    position: absolute;
+    inset: 0;
+    opacity: 0.2;
+    background: url("https://placehold.co/1920x500?text=Workshop+Background")
+      center/cover;
+  }
+  
+  .header-content {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 64px 32px 0;
+  }
+  
+  .profile-info {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  
+  .profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid #d4b69c;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin: 0;
+  }
+  
+  .image-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .artisan-details {
+    color: #f9f6f3;
+  }
+  
+  .artisan-name {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  
+  .artisan-subtitle {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .artisan-title,
+  .artisan-location {
+    font-size: 20px;
+  }
+  
+  .separator-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background-color: #d4b69c;
+  }
+  
+  .experience-years {
+    color: #d4b69c;
+    margin: 0;
+  }
+  
+  /* Navigation Styles */
+  .section-navigation {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #ffffff;
+    border-bottom: 2px solid #d4b69c;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+  
+  .nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  
+  .nav-tabs {
+    display: flex;
+    gap: 32px;
+    padding: 16px 0;
+    margin: 0;
+    list-style: none;
+    overflow-x: auto;
+  }
+  
+  .nav-tab {
+    font-size: 16px;
+    font-weight: 600;
+    white-space: nowrap;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: #c4946a;
+  }
+  
+  .nav-tab.active {
+    color: #5a4434;
+  }
+  
+  /* Content Section Styles */
+  .content-section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 64px 32px;
+  }
+  
+  /* Story Section */
+  .story-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  
+  .story-column {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .content-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 2px solid #d4b69c;
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
+  
+  .card-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: #5a4434;
+    margin-bottom: 16px;
+  }
+  
+  .bio-text {
+    font-size: 18px;
+    color: #c4946a;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  .achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .achievement-item {
+    color: #c4946a;
+    font-size: 18px;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  .skill-item {
+    background-color: #f9f6f3;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    color: #5a4434;
+    font-weight: 600;
+  }
+  
+  /* Gallery Section */
+  .gallery-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  
+  .gallery-item {
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 2px solid #d4b69c;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+  }
+  
+  .gallery-item:hover {
+    transform: translateY(-8px);
+  }
+  
+  .gallery-image {
+    height: 240px;
+    margin: 0;
+  }
+  
+  .gallery-details {
+    padding: 16px;
+  }
+  
+  .gallery-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #5a4434;
+    margin: 0 0 8px 0;
+  }
+  
+  .gallery-price {
+    font-size: 18px;
+    color: #c4946a;
+    margin: 0;
+  }
+  
+  /* Workshops Section */
+  .workshops-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  
+  .workshop-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 2px solid #d4b69c;
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
+  
+  .workshop-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #5a4434;
+    margin: 0 0 16px 0;
+  }
+  
+  .workshop-details {
+    margin-bottom: 24px;
+  }
+  
+  .workshop-date,
+  .workshop-spots,
+  .workshop-price {
+    margin: 8px 0;
+    color: #c4946a;
+    font-size: 18px;
+  }
+  
+  .register-button {
+    background-color: #5a4434;
+    color: #f9f6f3;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-family: "Crimson Text", serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .register-button:hover {
+    background-color: #c4946a;
+  }
+  
+  /* Testimonials Section */
+  .testimonials-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  
+  .testimonial-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    border: 2px solid #d4b69c;
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  }
+  
+  .testimonial-rating {
+    margin-bottom: 16px;
+  }
+  
+  .star {
+    color: #d4b69c;
+    font-size: 24px;
+  }
+  
+  .star.filled {
+    color: #c4946a;
+  }
+  
+  .testimonial-text {
+    font-size: 18px;
+    color: #5a4434;
+    line-height: 1.6;
+    margin: 0 0 16px 0;
+    font-style: italic;
+  }
+  
+  .testimonial-author {
+    text-align: right;
+    color: #c4946a;
+    font-weight: 600;
+  }
+  
+  .testimonial-author cite {
+    font-style: normal;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .story-section {
+      grid-template-columns: 1fr;
+    }
+  
+    .gallery-section {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .profile-info {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .nav-tabs {
+      gap: 16px;
+    }
+  
+    .workshops-section,
+    .testimonials-section {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .gallery-section {
+      grid-template-columns: 1fr;
+    }
+  
+    .profile-header {
+      height: auto;
+      padding-bottom: 32px;
+    }
+  
+    .artisan-name {
+      font-size: 36px;
+    }
+  
+    .content-section {
+      padding: 32px 16px;
+    }
+  }
+  

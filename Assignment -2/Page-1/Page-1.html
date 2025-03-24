@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Authentication Form</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="Page-1.css" />
+  </head>
+  <body>
+    <main
+      x-data="{
+      isLogin: true,
+      formData: {
+        email: '',
+        password: '',
+        name: ''
+      },
+      shake: false,
+      submitForm() {
+        if(!this.formData.email || !this.formData.password || (!this.isLogin && !this.formData.name)) {
+          this.shake = true;
+          setTimeout(() => this.shake = false, 500);
+          return;
+        }
+      }
+    }"
+      class="auth-container"
+    >
+      <section x-bind:class="{ 'shake-animation': shake }" class="auth-card">
+        <div class="wood-texture-overlay"></div>
+
+        <div class="auth-content">
+          <header class="auth-header">
+            <img
+              src="https://placehold.co/80x80?text=Logo"
+              alt="Craftsman Logo"
+              class="auth-logo"
+            />
+          </header>
+
+          <nav class="auth-tabs">
+            <button
+              x-on:click="isLogin = true"
+              x-bind:class="{ 'active-tab': isLogin, 'inactive-tab': !isLogin }"
+              class="auth-tab"
+            >
+              Sign In
+            </button>
+            <button
+              x-on:click="isLogin = false"
+              x-bind:class="{ 'active-tab': !isLogin, 'inactive-tab': isLogin }"
+              class="auth-tab"
+            >
+              Sign Up
+            </button>
+          </nav>
+
+          <form class="auth-form">
+            <div x-show="!isLogin" class="form-field">
+              <input
+                x-model="formData.name"
+                type="text"
+                id="name"
+                placeholder="Full Name"
+                class="form-input"
+              />
+              <label for="name" class="field-label">Name</label>
+            </div>
+
+            <div class="form-field">
+              <input
+                x-model="formData.email"
+                type="email"
+                id="email"
+                placeholder="Email Address"
+                class="form-input"
+              />
+              <label for="email" class="field-label">Email</label>
+            </div>
+
+            <div class="form-field">
+              <input
+                x-model="formData.password"
+                type="password"
+                id="password"
+                placeholder="Password"
+                class="form-input"
+              />
+              <label for="password" class="field-label">Password</label>
+            </div>
+
+            <button
+              type="button"
+              x-on:click="submitForm()"
+              class="submit-button"
+              x-bind:style="{ transform: $event.target.matches(':active') ? 'scale(0.98)' : undefined }"
+            >
+              <span x-text="isLogin ? 'Sign In' : 'Create Account'"></span>
+            </button>
+          </form>
+
+          <footer class="auth-footer">
+            <p class="toggle-text">
+              <span
+                x-text="isLogin ? 'Don\'t have an account?' : 'Already have an account?'"
+              ></span>
+              <button
+                type="button"
+                x-on:click="isLogin = !isLogin"
+                class="toggle-link"
+              >
+                Click here
+              </button>
+            </p>
+          </footer>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

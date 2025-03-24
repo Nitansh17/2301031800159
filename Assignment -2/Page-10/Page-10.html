@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artisan Workshops & Events</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="Page-10.html" />
+  </head>
+  <body>
+    <main
+      x-data="{
+      activeMonth: 'December',
+      selectedEvent: null,
+      events: [
+        {
+          id: 1,
+          title: 'Advanced Pottery Workshop',
+          instructor: 'Maria Chen',
+          craft: 'Ceramics',
+          date: 'Dec 15',
+          time: '10:00 AM - 2:00 PM',
+          spots: 8,
+          price: 189,
+          level: 'Advanced',
+          description: 'Master the art of large-scale ceramic vessels and advanced glazing techniques.',
+          image: 'https://placehold.co/600x400',
+          instructorImage: 'https://placehold.co/200x200'
+        },
+        {
+          id: 2,
+          title: 'Textile Weaving Basics',
+          instructor: 'James Miller',
+          craft: 'Weaving',
+          date: 'Dec 18',
+          time: '1:00 PM - 4:00 PM',
+          spots: 12,
+          price: 145,
+          level: 'Beginner',
+          description: 'Learn fundamental weaving techniques and create your first wall hanging.',
+          image: 'https://placehold.co/600x400',
+          instructorImage: 'https://placehold.co/200x200'
+        },
+        {
+          id: 3,
+          title: 'Glass Blowing Experience',
+          instructor: 'Sarah Blake',
+          craft: 'Glass Art',
+          date: 'Dec 20',
+          time: '11:00 AM - 3:00 PM',
+          spots: 6,
+          price: 235,
+          level: 'Intermediate',
+          description: 'Create stunning glass pieces while learning traditional blowing techniques.',
+          image: 'https://placehold.co/600x400',
+          instructorImage: 'https://placehold.co/200x200'
+        }
+      ],
+      months: ['December', 'January', 'February'],
+      categories: ['All', 'Ceramics', 'Weaving', 'Glass Art', 'Woodworking'],
+      activeCategory: 'All',
+      hoveredEvent: null,
+      showEventDetails(event) {
+        this.selectedEvent = event;
+      },
+      closeEventDetails() {
+        this.selectedEvent = null;
+      }
+    }"
+      class="min-h-screen w-screen bg-[#F9F6F3] font-[Crimson_Text]"
+    >
+      <header class="relative bg-[#5A4434] py-[64px] overflow-hidden">
+        <div
+          class="absolute inset-0 opacity-[0.1]"
+          style="
+            background: url(&quot;https://placehold.co/1920x400?text=Festival+Pattern&quot;)
+              center/cover;
+          "
+        ></div>
+        <div class="relative max-w-[1400px] mx-auto px-[32px] text-center">
+          <h1 class="text-[48px] font-semibold text-[#F9F6F3] mb-[16px]">
+            Artisan Workshops & Events
+          </h1>
+          <p class="text-[20px] text-[#D4B69C]">
+            Join our community of makers and master new crafts
+          </p>
+        </div>
+      </header>
+
+      <section class="max-w-[1400px] mx-auto px-[32px] py-[48px]">
+        <div
+          class="filter-controls flex justify-between items-center gap-[32px] mb-[48px] max-sm:flex-col"
+        >
+          <nav class="month-filter flex gap-[16px] overflow-x-auto py-[8px]">
+            <template x-for="month in months" :key="month">
+              <button
+                x-text="month"
+                x-on:click="activeMonth = month"
+                x-bind:class="activeMonth === month ? 'bg-[#5A4434] text-[#F9F6F3]' : 'bg-[#FFFFFF] text-[#5A4434] border-[#D4B69C]'"
+                class="px-[16px] py-[8px] rounded-[8px] border-[2px] whitespace-nowrap font-semibold"
+              ></button>
+            </template>
+          </nav>
+
+          <nav class="category-filter flex gap-[16px] overflow-x-auto py-[8px]">
+            <template x-for="category in categories" :key="category">
+              <button
+                x-text="category"
+                x-on:click="activeCategory = category"
+                x-bind:class="activeCategory === category ? 'bg-[#5A4434] text-[#F9F6F3]' : 'bg-[#FFFFFF] text-[#5A4434] border-[#D4B69C]'"
+                class="px-[16px] py-[8px] rounded-[8px] border-[2px] whitespace-nowrap font-semibold"
+              ></button>
+            </template>
+          </nav>
+        </div>
+
+        <div
+          class="events-grid grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-[32px]"
+        >
+          <template x-for="event in events" :key="event.id">
+            <article
+              class="event-card bg-[#FFFFFF] rounded-[16px] border-[2px] border-[#D4B69C] overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.05)] transition-transform duration-300 hover:transform hover:scale-[1.02]"
+              x-on:mouseenter="hoveredEvent = event.id"
+              x-on:mouseleave="hoveredEvent = null"
+            >
+              <img
+                x-bind:src="event.image"
+                class="w-full h-[200px] object-cover"
+                alt="Workshop image"
+              />
+              <div class="p-[24px]">
+                <div class="flex justify-between items-start mb-[16px]">
+                  <h2
+                    x-text="event.title"
+                    class="text-[24px] font-semibold text-[#5A4434]"
+                  ></h2>
+                  <span
+                    x-text="event.level"
+                    class="text-[14px] px-[12px] py-[4px] rounded-full bg-[#F9F6F3] text-[#C4946A] border-[1px] border-[#D4B69C]"
+                  ></span>
+                </div>
+
+                <div class="flex items-center gap-[8px] mb-[16px]">
+                  <img
+                    x-bind:src="event.instructorImage"
+                    class="w-[32px] h-[32px] rounded-full object-cover"
+                    alt="Instructor image"
+                  />
+                  <p
+                    x-text="event.instructor"
+                    class="text-[16px] text-[#C4946A]"
+                  ></p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-[8px] mb-[24px]">
+                  <div class="bg-[#F9F6F3] rounded-[8px] p-[12px]">
+                    <p class="text-[14px] text-[#C4946A] mb-[4px]">Date</p>
+                    <p
+                      x-text="event.date"
+                      class="text-[16px] text-[#5A4434]"
+                    ></p>
+                  </div>
+                  <div class="bg-[#F9F6F3] rounded-[8px] p-[12px]">
+                    <p class="text-[14px] text-[#C4946A] mb-[4px]">Price</p>
+                    <p class="text-[16px] text-[#5A4434]">
+                      <span>$</span><span x-text="event.price"></span>
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  x-on:click="showEventDetails(event)"
+                  class="w-full bg-[#5A4434] text-[#F9F6F3] py-[12px] rounded-[8px] text-[16px] font-semibold shadow-[0_4px_12px_rgba(90,68,52,0.2)] hover:bg-[#6B5545] transition-colors duration-300"
+                >
+                  View Details
+                </button>
+              </div>
+            </article>
+          </template>
+        </div>
+      </section>
+
+      <!-- Event Details Modal -->
+      <div
+        x-show="selectedEvent"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        class="fixed inset-0 bg-[rgba(0,0,0,0.5)] flex items-center justify-center p-[32px] z-[50]"
+      >
+        <div
+          x-show="selectedEvent"
+          x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="opacity-0 transform scale-95"
+          x-transition:enter-end="opacity-100 transform scale-100"
+          x-transition:leave="transition ease-in duration-200"
+          x-transition:leave-start="opacity-100 transform scale-100"
+          x-transition:leave-end="opacity-0 transform scale-95"
+          class="relative bg-[#FFFFFF] rounded-[16px] border-[2px] border-[#D4B69C] shadow-[0_8px_32px_rgba(0,0,0,0.2)] w-full max-w-[800px] max-h-[90vh] overflow-y-auto"
+          @click.outside="closeEventDetails()"
+        >
+          <button
+            x-on:click="closeEventDetails()"
+            class="absolute top-[16px] right-[16px] text-[#C4946A] hover:text-[#5A4434] transition-colors duration-300"
+            aria-label="Close modal"
+          >
+            <svg
+              class="w-[24px] h-[24px]"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              ></path>
+            </svg>
+          </button>
+
+          <img
+            x-bind:src="selectedEvent?.image"
+            class="w-full h-[300px] object-cover"
+            alt="Workshop cover image"
+          />
+
+          <div class="p-[32px]">
+            <div class="flex items-start gap-[24px] mb-[32px]">
+              <img
+                x-bind:src="selectedEvent?.instructorImage"
+                class="w-[100px] h-[100px] rounded-full object-cover border-[2px] border-[#D4B69C]"
+                alt="Instructor image"
+              />
+              <div>
+                <h2
+                  x-text="selectedEvent?.title"
+                  class="text-[32px] font-semibold text-[#5A4434] mb-[8px]"
+                ></h2>
+                <p class="text-[18px] text-[#C4946A]">
+                  <span>Instructor: </span>
+                  <span x-text="selectedEvent?.instructor"></span>
+                </p>
+              </div>
+            </div>
+
+            <p
+              x-text="selectedEvent?.description"
+              class="text-[18px] text-[#5A4434] mb-[32px]"
+            ></p>
+
+            <div class="event-details grid grid-cols-3 gap-[16px] mb-[32px]">
+              <div
+                class="bg-[#F9F6F3] rounded-[8px] p-[16px] border-[2px] border-[#D4B69C]"
+              >
+                <p class="text-[14px] text-[#C4946A] mb-[4px]">Date & Time</p>
+                <p
+                  x-text="selectedEvent?.date + ' • ' + selectedEvent?.time"
+                  class="text-[16px] text-[#5A4434]"
+                ></p>
+              </div>
+
+              <div
+                class="bg-[#F9F6F3] rounded-[8px] p-[16px] border-[2px] border-[#D4B69C]"
+              >
+                <p class="text-[14px] text-[#C4946A] mb-[4px]">
+                  Spots Available
+                </p>
+                <p
+                  x-text="selectedEvent?.spots + ' spots'"
+                  class="text-[16px] text-[#5A4434]"
+                ></p>
+              </div>
+
+              <div
+                class="bg-[#F9F6F3] rounded-[8px] p-[16px] border-[2px] border-[#D4B69C]"
+              >
+                <p class="text-[14px] text-[#C4946A] mb-[4px]">Price</p>
+                <p class="text-[16px] text-[#5A4434]">
+                  <span>$</span>
+                  <span x-text="selectedEvent?.price"></span>
+                </p>
+              </div>
+            </div>
+
+            <button
+              class="w-full bg-[#5A4434] text-[#F9F6F3] py-[16px] rounded-[8px] text-[18px] font-semibold shadow-[0_4px_12px_rgba(90,68,52,0.2)] hover:bg-[#6B5545] transition-colors duration-300"
+            >
+              Register for Workshop
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ceramic Artistry</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+    <link rel="stylesheet" href="Page-5.css" />
+  </head>
+  <body>
+    <main
+      x-data="{
+      products: [
+        {
+          id: 1,
+          name: 'Handcrafted Stoneware Vase',
+          artist: 'Maria Chen',
+          price: 189,
+          rating: 4.8,
+          sales: 124,
+          glaze: 'Celadon',
+          technique: 'Wheel-thrown',
+          image: 'https://placehold.co/400x500?text=Ceramic+Vase'
+        },
+        {
+          id: 2,
+          name: 'Rustic Tea Set Collection',
+          artist: 'James Miller',
+          price: 245,
+          rating: 4.9,
+          sales: 89,
+          glaze: 'Matte Black',
+          technique: 'Hand-built',
+          image: 'https://placehold.co/400x500?text=Tea+Set'
+        },
+        {
+          id: 3,
+          name: 'Decorative Wall Plates',
+          artist: 'Sarah Wong',
+          price: 165,
+          rating: 4.7,
+          sales: 156,
+          glaze: 'Crystalline',
+          technique: 'Slab-built',
+          image: 'https://placehold.co/400x500?text=Wall+Plates'
+        },
+        {
+          id: 4,
+          name: 'Modern Serving Bowl',
+          artist: 'David Clark',
+          price: 128,
+          rating: 4.9,
+          sales: 198,
+          glaze: 'Tenmoku',
+          technique: 'Wheel-thrown',
+          image: 'https://placehold.co/400x500?text=Serving+Bowl'
+        },
+        {
+          id: 5,
+          name: 'Sculptural Ceramic Vessel',
+          artist: 'Elena Santos',
+          price: 295,
+          rating: 4.8,
+          sales: 67,
+          glaze: 'Raku',
+          technique: 'Coil-built',
+          image: 'https://placehold.co/400x500?text=Vessel'
+        },
+        {
+          id: 6,
+          name: 'Minimalist Dinner Set',
+          artist: 'Thomas Reed',
+          price: 389,
+          rating: 4.6,
+          sales: 145,
+          glaze: 'Shino',
+          technique: 'Wheel-thrown',
+          image: 'https://placehold.co/400x500?text=Dinner+Set'
+        }
+      ],
+      sortOptions: ['Most Popular', 'Newest', 'Price: Low to High', 'Price: High to Low'],
+      filters: {
+        techniques: ['Wheel-thrown', 'Hand-built', 'Slab-built', 'Coil-built'],
+        glazes: ['Celadon', 'Tenmoku', 'Shino', 'Raku', 'Crystalline', 'Matte Black']
+      },
+      activeSort: 'Most Popular',
+      activeTechnique: 'all',
+      activeGlaze: 'all',
+      hoveredProduct: null,
+
+      filteredProducts() {
+        return this.products.filter(product => {
+          const techniqueMatch = this.activeTechnique === 'all' || product.technique === this.activeTechnique;
+          const glazeMatch = this.activeGlaze === 'all' || product.glaze === this.activeGlaze;
+          return techniqueMatch && glazeMatch;
+        });
+      }
+    }"
+      class="min-h-screen w-screen bg-[#F5EDE5] font-[Crimson_Text]"
+    >
+      <header class="bg-[#5A4434] text-[#F5EDE5] py-[40px]">
+        <div class="max-w-[1400px] mx-auto px-[32px]">
+          <h1 class="text-[48px] font-semibold mb-[16px]">Ceramic Artistry</h1>
+          <p class="text-[20px] text-[#D4B69C]">
+            Discover handcrafted pottery from master artisans
+          </p>
+        </div>
+      </header>
+
+      <section class="max-w-[1400px] mx-auto p-[32px]">
+        <!-- Filters Section -->
+        <div
+          class="bg-[#FFFFFF] rounded-[16px] border-[2px] border-[#C4946A] shadow-[0_8px_32px_rgba(0,0,0,0.08)] mb-[32px]"
+        >
+          <div class="grid grid-cols-3 max-sm:grid-cols-1 gap-[24px] p-[24px]">
+            <!-- Sort Filter -->
+            <div class="flex flex-col gap-[8px]">
+              <label for="sort-select" class="text-[14px] text-[#C4946A]"
+                >Sort By</label
+              >
+              <select
+                id="sort-select"
+                x-model="activeSort"
+                class="w-full bg-[#F5EDE5] text-[#5A4434] border-[2px] border-[#D4B69C] rounded-[8px] p-[12px] text-[16px] outline-none"
+              >
+                <template x-for="option in sortOptions" :key="option">
+                  <option :value="option" x-text="option"></option>
+                </template>
+              </select>
+            </div>
+
+            <!-- Technique Filter -->
+            <div class="flex flex-col gap-[8px]">
+              <label for="technique-select" class="text-[14px] text-[#C4946A]"
+                >Technique</label
+              >
+              <select
+                id="technique-select"
+                x-model="activeTechnique"
+                class="w-full bg-[#F5EDE5] text-[#5A4434] border-[2px] border-[#D4B69C] rounded-[8px] p-[12px] text-[16px] outline-none"
+              >
+                <option value="all">All Techniques</option>
+                <template
+                  x-for="technique in filters.techniques"
+                  :key="technique"
+                >
+                  <option :value="technique" x-text="technique"></option>
+                </template>
+              </select>
+            </div>
+
+            <!-- Glaze Filter -->
+            <div class="flex flex-col gap-[8px]">
+              <label for="glaze-select" class="text-[14px] text-[#C4946A]"
+                >Glaze</label
+              >
+              <select
+                id="glaze-select"
+                x-model="activeGlaze"
+                class="w-full bg-[#F5EDE5] text-[#5A4434] border-[2px] border-[#D4B69C] rounded-[8px] p-[12px] text-[16px] outline-none"
+              >
+                <option value="all">All Glazes</option>
+                <template x-for="glaze in filters.glazes" :key="glaze">
+                  <option :value="glaze" x-text="glaze"></option>
+                </template>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div
+          class="grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-[32px]"
+        >
+          <template x-for="product in filteredProducts()" :key="product.id">
+            <article
+              class="bg-white rounded-[16px] overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.05)] border-[1px] border-[#D4B69C] transition-all duration-300 hover:shadow-[0_8px_24px_rgba(0,0,0,0.12)] hover:translate-y-[-4px]"
+              @mouseenter="hoveredProduct = product.id"
+              @mouseleave="hoveredProduct = null"
+            >
+              <div class="relative aspect-[4/5] overflow-hidden">
+                <img
+                  :src="product.image"
+                  :alt="product.name"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-[24px]">
+                <h2
+                  class="text-[24px] font-semibold text-[#5A4434] mb-[8px]"
+                  x-text="product.name"
+                ></h2>
+                <p class="text-[16px] text-[#C4946A] mb-[16px]">
+                  By <span x-text="product.artist"></span>
+                </p>
+
+                <div class="flex justify-between items-center mb-[16px]">
+                  <p class="text-[22px] font-semibold text-[#5A4434]">
+                    $<span x-text="product.price"></span>
+                  </p>
+                  <div class="flex items-center gap-[4px]">
+                    <span class="text-[#C4946A]">★</span>
+                    <span
+                      class="text-[14px] text-[#5A4434]"
+                      x-text="product.rating"
+                    ></span>
+                    <span class="text-[14px] text-[#8A7464]">
+                      (<span x-text="product.sales"></span> sold)
+                    </span>
+                  </div>
+                </div>
+
+                <div class="flex flex-wrap gap-[8px] mb-[16px]">
+                  <span
+                    class="px-[12px] py-[4px] bg-[#F5EDE5] text-[#8A7464] rounded-full text-[14px]"
+                    x-text="product.technique"
+                  ></span>
+                  <span
+                    class="px-[12px] py-[4px] bg-[#F5EDE5] text-[#8A7464] rounded-full text-[14px]"
+                    x-text="product.glaze"
+                  ></span>
+                </div>
+
+                <button
+                  class="w-full py-[12px] bg-[#C4946A] text-white rounded-[8px] font-semibold hover:bg-[#B3835B] transition-colors"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            </article>
+          </template>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
