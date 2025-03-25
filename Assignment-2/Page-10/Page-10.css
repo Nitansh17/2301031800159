@@ -1,0 +1,226 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Abhaya Libre", serif;
+    background-color: #fff;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  /* Main container */
+  .search-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fff;
+  }
+  
+  /* Status bar */
+  .status-bar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 14px 16px;
+  }
+  
+  .status-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .time {
+    color: #000;
+    font-family: "SF Pro", sans-serif;
+    font-size: 17px;
+    font-weight: 590;
+    line-height: 22px;
+  }
+  
+  .status-icons {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  
+  /* Search content */
+  .search-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 18px;
+    gap: 24px;
+  }
+  
+  /* Search bar section */
+  .search-bar-section {
+    position: relative;
+    width: 100%;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 53px;
+    border-radius: 17px;
+    border: 1px solid #000;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 0 16px;
+  }
+  
+  .back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .search-input-wrapper {
+    flex: 1;
+  }
+  
+  .search-input {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: "Abhaya Libre", serif;
+    font-size: 16px;
+    padding: 8px 0;
+  }
+  
+  .search-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .search-icon,
+  .clear-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Recent searches section */
+  .recent-searches {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .section-title {
+    color: #000;
+    font-family: "Abhaya Libre", serif;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 22px;
+  }
+  
+  .clear-all-button {
+    color: #1088eb;
+    font-family: "Abhaya Libre", serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 22px;
+  }
+  
+  .search-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .search-history-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .history-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .history-text {
+    color: #bbb;
+    font-family: "Abhaya Libre", serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+  }
+  
+  .remove-history {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Trendy searches section */
+  .trendy-searches {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .trendy-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .trendy-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 22px;
+    border: 1px solid #000;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  }
+  
+  .trend-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .tag-text {
+    color: #000;
+    font-family: "Abhaya Libre", serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+  }
+  
+  /* Specific tag for Google Quantum */
+  .trendy-tag:nth-child(4) .tag-text {
+    font-size: 12px;
+  }
+  

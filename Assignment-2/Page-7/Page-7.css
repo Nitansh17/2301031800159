@@ -1,0 +1,554 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+      Arial, sans-serif;
+  }
+  
+  .mobile-container {
+    background-color: rgba(255, 255, 255, 1);
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 480px;
+    width: 100%;
+    padding-bottom: 8px;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: stretch;
+  }
+  
+  /* Status Bar */
+  .status-bar {
+    background-color: rgba(255, 255, 255, 1);
+    min-height: 50px;
+    width: 100%;
+    padding-top: 21px;
+  }
+  
+  .status-bar-content {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .time {
+    align-self: stretch;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 16px;
+    padding-right: 6px;
+    gap: 10px;
+    font-family:
+      "SF Pro",
+      -apple-system,
+      Roboto,
+      Helvetica,
+      sans-serif;
+    font-size: 17px;
+    color: rgba(0, 0, 0, 1);
+    font-weight: 590;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1;
+    flex: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+  }
+  
+  .dynamic-island-spacer {
+    align-self: stretch;
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 124px;
+    flex-shrink: 0;
+    height: 10px;
+  }
+  
+  .status-icons {
+    align-self: stretch;
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 6px;
+    padding-right: 16px;
+    align-items: center;
+    gap: 7px;
+    justify-content: center;
+    flex: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+  }
+  
+  .signal-icon {
+    aspect-ratio: 1.58;
+    object-fit: contain;
+    object-position: center;
+    width: 19px;
+    align-self: stretch;
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-shrink: 0;
+  }
+  
+  .battery-icon {
+    aspect-ratio: 1.5;
+    object-fit: contain;
+    object-position: center;
+    width: 18px;
+    align-self: stretch;
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-shrink: 0;
+  }
+  
+  /* Content Area */
+  .content-area {
+    display: flex;
+    margin-top: 20px;
+    width: 100%;
+    padding-left: 11px;
+    padding-right: 3px;
+    flex-direction: column;
+    align-items: stretch;
+    font-family:
+      "Abhaya Libre ExtraBold",
+      -apple-system,
+      Roboto,
+      Helvetica,
+      sans-serif;
+    font-weight: 800;
+    line-height: 22px;
+  }
+  
+  /* App Header */
+  .app-header {
+    align-self: center;
+    display: flex;
+    width: 100%;
+    max-width: 325px;
+    align-items: stretch;
+    gap: 20px;
+    font-family:
+      "Roboto Serif",
+      -apple-system,
+      Roboto,
+      Helvetica,
+      sans-serif;
+    font-size: 20px;
+    color: rgba(23, 23, 23, 1);
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.1;
+    justify-content: space-between;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: stretch;
+    gap: 6px;
+  }
+  
+  .home-icon {
+    aspect-ratio: 1.25;
+    object-fit: contain;
+    object-position: center;
+    width: 30px;
+    flex-shrink: 0;
+  }
+  
+  .app-title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  
+  .menu-icon {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 18px;
+    align-self: start;
+    flex-shrink: 0;
+  }
+  
+  /* Category Navigation */
+  .category-nav {
+    align-self: start;
+    display: flex;
+    margin-top: 24px;
+    align-items: stretch;
+    gap: 25px;
+    font-size: 14px;
+    color: rgba(136, 132, 132, 1);
+    white-space: nowrap;
+    text-align: center;
+    line-height: 2;
+  }
+  
+  .search-icon {
+    aspect-ratio: 1.16;
+    object-fit: contain;
+    object-position: center;
+    width: 22px;
+    margin-top: auto;
+    margin-bottom: auto;
+    flex-shrink: 0;
+  }
+  
+  .category-item {
+    font-family:
+      "Abhaya Libre ExtraBold",
+      -apple-system,
+      Roboto,
+      Helvetica,
+      sans-serif;
+    font-weight: 800;
+  }
+  
+  .category-active {
+    color: rgba(12, 12, 12, 1);
+  }
+  
+  /* Featured Article */
+  .featured-article {
+    margin-top: 14px;
+  }
+  
+  .article-title {
+    color: rgba(0, 0, 0, 1);
+    font-size: 16px;
+    font-family:
+      "Abhaya Libre ExtraBold",
+      -apple-system,
+      Roboto,
+      Helvetica,
+      sans-serif;
+    font-weight: 800;
+  }
+  
+  .article-summary {
+    color: rgba(144, 126, 126, 1);
+    font-size: 10px;
+    align-self: start;
+    margin-top: 8px;
+    font-family:
+      "Abhaya Libre ExtraBold",
+      -apple-system,
+      Roboto,
+      Helvetica,
+      sans-serif;
+    font-weight: 800;
+  }
+  
+  .article-actions {
+    align-self: flex-end;
+    margin-top: 8px;
+    margin-right: 39px;
+  }
+  
+  .action-dot {
+    aspect-ratio: 0.17;
+    object-fit: contain;
+    object-position: center;
+    width: 3px;
+  }
+  
+  /* Featured Image */
+  .featured-image-container {
+    margin-top: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .featured-image {
+    aspect-ratio: 1.83;
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    border-radius: 27px;
+    max-width: 361px;
+  }
+  
+  /* Tags */
+  .tags-container {
+    align-self: center;
+    display: flex;
+    margin-top: 12px;
+    width: 100%;
+    max-width: 364px;
+    align-items: start;
+    gap: 20px;
+    font-family:
+      "Abhaya Libre ExtraBold",
+      -apple-system,
+      Roboto,
+      Helvetica,
+      sans-serif;
+    font-size: 12px;
+    color: rgba(79, 76, 76, 1);
+    font-weight: 800;
+    white-space: nowrap;
+    line-height: 22px;
+  }
+  
+  .tag {
+    border-radius: 22px;
+    background-color: rgba(255, 254, 218, 1);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 1px 8px;
+  }
+  
+  .tag:nth-child(3) {
+    transform: rotate(0.0039647509663056245rad);
+    padding: 1px 6px 13px 6px;
+    line-height: 2;
+  }
+  
+  .tag:nth-child(4) {
+    padding: 1px 13px;
+  }
+  
+  /* News List */
+  .news-list {
+    align-self: start;
+    display: flex;
+    margin-top: 36px;
+    align-items: stretch;
+    gap: 13px;
+  }
+  
+  .spacer {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 0px;
+    flex-shrink: 0;
+    height: 24px;
+  }
+  
+  .news-list-content {
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    align-items: stretch;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+  }
+  
+  .news-item {
+    display: flex;
+    align-items: start;
+    gap: 6px;
+    font-family:
+      "Abhaya Libre ExtraBold",
+      -apple-system,
+      Roboto,
+      Helvetica,
+      sans-serif;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 1);
+    font-weight: 800;
+    line-height: 22px;
+  }
+  
+  .news-thumbnail {
+    aspect-ratio: 1.23;
+    object-fit: contain;
+    object-position: center;
+    width: 70px;
+    border-radius: 20px;
+    flex-shrink: 0;
+  }
+  
+  .news-title {
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 275px;
+    flex-basis: auto;
+    font-size: 18px;
+  }
+  
+  .article-actions-row {
+    align-self: end;
+    display: flex;
+    align-items: start;
+    gap: 13px;
+  }
+  
+  .action-icon {
+    width: 14px;
+    flex-shrink: 0;
+  }
+  
+  .action-icon:nth-child(1) {
+    aspect-ratio: 0.93;
+    object-fit: contain;
+    object-position: center;
+    align-self: stretch;
+  }
+  
+  .action-icon:nth-child(2) {
+    aspect-ratio: 2.33;
+    object-fit: contain;
+    object-position: center;
+    margin-top: 7px;
+  }
+  
+  .action-icon:nth-child(3) {
+    aspect-ratio: 0.21;
+    object-fit: contain;
+    object-position: center;
+  }
+  
+  .divider {
+    border-color: rgba(217, 217, 217, 1);
+    border-style: solid;
+    border-width: 1px;
+    margin-top: 14px;
+    width: 363px;
+    flex-shrink: 0;
+    max-width: 100%;
+    height: 1px;
+  }
+  
+  .news-item-horizontal {
+    margin-top: 19px;
+  }
+  
+  .news-content {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+    width: fit-content;
+  }
+  
+  .news-meta {
+    display: flex;
+    margin-top: 6px;
+    align-items: start;
+    gap: 40px 46px;
+    font-size: 10px;
+    color: rgba(82, 72, 72, 1);
+  }
+  
+  .news-date {
+    align-self: stretch;
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 168px;
+  }
+  
+  .action-icon-small {
+    width: 14px;
+    flex-shrink: 0;
+  }
+  
+  .action-icon-small:nth-child(2) {
+    aspect-ratio: 0.93;
+    object-fit: contain;
+    object-position: center;
+  }
+  
+  .action-icon-small:nth-child(3) {
+    aspect-ratio: 0.21;
+    object-fit: contain;
+    object-position: center;
+  }
+  
+  /* Page Dividers */
+  .page-divider {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-color: rgba(245, 241, 241, 1);
+    border-style: solid;
+    border-width: 1px;
+    min-height: 1px;
+    margin-top: 23px;
+    width: 100%;
+  }
+  
+  .page-divider:nth-child(2) {
+    z-index: 10;
+    margin-top: 0;
+  }
+  
+  /* Bottom Navigation */
+  .bottom-nav {
+    align-self: center;
+    display: flex;
+    margin-top: 7px;
+    width: 100%;
+    max-width: 337px;
+    align-items: start;
+    gap: 20px;
+    font-family:
+      Roboto,
+      -apple-system,
+      Roboto,
+      Helvetica,
+      sans-serif;
+    font-size: 12px;
+    color: rgba(136, 132, 132, 1);
+    font-weight: 500;
+    text-align: center;
+    line-height: 22px;
+    justify-content: space-between;
+  }
+  
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .nav-item-active {
+    margin-top: 4px;
+    font-size: 17px;
+    color: rgba(21, 21, 21, 1);
+    white-space: nowrap;
+    line-height: 1;
+  }
+  
+  .nav-icon {
+    width: 24px;
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+  }
+  
+  .nav-item:first-child .nav-icon {
+    aspect-ratio: 1.25;
+    width: 30px;
+  }
+  
+  .nav-item:nth-child(3) .nav-icon {
+    aspect-ratio: 1.07;
+    width: 31px;
+  }
+  
+  .nav-item:last-child {
+    margin-top: 5px;
+    color: rgba(187, 187, 187, 1);
+    white-space: nowrap;
+  }
+  
+  /* Home Indicator */
+  .home-indicator {
+    border-radius: 100px;
+    background-color: rgba(0, 0, 0, 1);
+    align-self: center;
+    display: flex;
+    margin-top: 16px;
+    width: 144px;
+    flex-shrink: 0;
+    height: 5px;
+  }
+  

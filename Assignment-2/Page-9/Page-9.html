@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Summarize</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, Roboto, Helvetica, sans-serif;
+      }
+
+      .mobile-container {
+        background-color: rgba(255, 255, 255, 1);
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 480px;
+        width: 100%;
+        padding-bottom: 44px;
+        flex-direction: column;
+        overflow: hidden;
+        align-items: stretch;
+      }
+
+      .status-bar {
+        background-color: rgba(255, 255, 255, 1);
+        min-height: 50px;
+        width: 100%;
+        padding-top: 21px;
+      }
+
+      .status-bar-content {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .time-display {
+        align-self: stretch;
+        margin-top: auto;
+        margin-bottom: auto;
+        padding-left: 16px;
+        padding-right: 6px;
+        gap: 10px;
+        font-family:
+          SF Pro,
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 17px;
+        color: rgba(0, 0, 0, 1);
+        font-weight: 590;
+        white-space: nowrap;
+        text-align: center;
+        line-height: 1;
+        flex: 1;
+        flex-shrink: 1;
+        flex-basis: 0%;
+      }
+
+      .notch-spacer {
+        align-self: stretch;
+        display: flex;
+        margin-top: auto;
+        margin-bottom: auto;
+        width: 124px;
+        flex-shrink: 0;
+        height: 10px;
+      }
+
+      .status-icons {
+        align-self: stretch;
+        display: flex;
+        margin-top: auto;
+        margin-bottom: auto;
+        padding-left: 6px;
+        padding-right: 16px;
+        align-items: center;
+        gap: 7px;
+        justify-content: center;
+        flex: 1;
+        flex-shrink: 1;
+        flex-basis: 0%;
+      }
+
+      .signal-icon {
+        aspect-ratio: 1.58;
+        object-fit: contain;
+        object-position: center;
+        width: 19px;
+        align-self: stretch;
+        margin-top: auto;
+        margin-bottom: auto;
+        flex-shrink: 0;
+      }
+
+      .battery-icon {
+        aspect-ratio: 1.5;
+        object-fit: contain;
+        object-position: center;
+        width: 18px;
+        align-self: stretch;
+        margin-top: auto;
+        margin-bottom: auto;
+        flex-shrink: 0;
+      }
+
+      .app-header {
+        display: flex;
+        margin-top: 13px;
+        width: 100%;
+        padding-left: 27px;
+        padding-right: 55px;
+        flex-direction: column;
+        align-items: start;
+        font-family:
+          Roboto,
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 17px;
+        color: rgba(0, 0, 0, 1);
+        font-weight: 500;
+        text-align: center;
+        line-height: 1;
+      }
+
+      .app-logo {
+        aspect-ratio: 1.38;
+        object-fit: contain;
+        object-position: center;
+        width: 29px;
+      }
+
+      .app-title {
+        margin-top: 37px;
+      }
+
+      .app-description {
+        color: rgba(187, 187, 187, 1);
+        font-size: 12px;
+        line-height: 22px;
+        align-self: stretch;
+      }
+
+      .greeting {
+        margin-top: 484px;
+      }
+
+      .ai-prompt {
+        color: rgba(187, 187, 187, 1);
+        font-size: 13px;
+        line-height: 2;
+      }
+
+      .divider {
+        background-color: rgba(158, 154, 154, 1);
+        border-color: rgba(193, 188, 188, 1);
+        border-style: solid;
+        border-width: 1px;
+        min-height: 3px;
+        margin-top: 65px;
+        width: 100%;
+      }
+
+      .input-container {
+        align-self: center;
+        display: flex;
+        margin-top: 17px;
+        width: 100%;
+        align-items: stretch;
+        gap: 20px;
+        font-family:
+          "Abhaya Libre Medium",
+          -apple-system,
+          Roboto,
+          Helvetica,
+          sans-serif;
+        font-size: 13px;
+        color: rgba(187, 187, 187, 1);
+        font-weight: 500;
+        text-align: center;
+        line-height: 2;
+        justify-content: space-between;
+      }
+
+      .input-field-wrapper {
+        display: flex;
+        align-items: stretch;
+        gap: 33px;
+      }
+
+      .mic-icon {
+        aspect-ratio: 1;
+        object-fit: contain;
+        object-position: center;
+        width: 30px;
+        flex-shrink: 0;
+      }
+
+      .input-placeholder {
+        flex-basis: auto;
+      }
+
+      .send-icon {
+        aspect-ratio: 1;
+        object-fit: contain;
+        object-position: center;
+        width: 30px;
+        flex-shrink: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="mobile-container">
+      <header class="status-bar">
+        <div class="status-bar-content">
+          <time class="time-display">9:41</time>
+          <div class="notch-spacer"></div>
+          <div class="status-icons">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/c2d46c4df2e9969145f38a9fdbedb79c3077cbc7?placeholderIfAbsent=true"
+              class="signal-icon"
+              alt="Signal strength"
+            />
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/5903dfa34b80e3a054b11c3dff203989261d78d5?placeholderIfAbsent=true"
+              class="battery-icon"
+              alt="Battery level"
+            />
+          </div>
+        </div>
+      </header>
+
+      <section class="app-header">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/6e22b5f3372c2ea476a97c72b7ff00e99f206744?placeholderIfAbsent=true"
+          class="app-logo"
+          alt="AI Summarize logo"
+        />
+        <h1 class="app-title">Al Summarize</h1>
+        <p class="app-description">
+          you can create a summary of the news you want to follow
+        </p>
+        <h2 class="greeting">Hey Nitansh</h2>
+        <p class="ai-prompt">what news would you like me to summarize?</p>
+      </section>
+
+      <hr class="divider" />
+
+      <footer class="input-container">
+        <div class="input-field-wrapper">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/ff4e11a81624f708832be96d1be58c552709fd30?placeholderIfAbsent=true"
+            class="mic-icon"
+            alt="Microphone"
+          />
+          <p class="input-placeholder">What news are we taking about...</p>
+        </div>
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/c9c75896ddd8a77ae50eb4d40879797337598bc1?placeholderIfAbsent=true"
+          class="send-icon"
+          alt="Send"
+        />
+      </footer>
+    </main>
+  </body>
+</html>

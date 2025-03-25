@@ -1,0 +1,162 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif;
+  }
+  
+  /* Page container */
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #fff;
+    width: 100%;
+  }
+  
+  /* Status bar */
+  .status-bar {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    padding-top: 21px;
+    align-items: flex-start;
+    background-color: #fff;
+  }
+  
+  .status-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  .time {
+    font-family: "SF Pro", sans-serif;
+    font-size: 17px;
+    font-weight: 590;
+    line-height: 22px;
+    color: #000;
+  }
+  
+  .status-icons {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  
+  .status-svg {
+    width: 140px;
+    height: 14px;
+  }
+  
+  /* Main content */
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  /* Hero section */
+  .hero-image {
+    width: 100%;
+    max-width: 398px;
+    height: auto;
+    margin-top: 20px;
+  }
+  
+  .blur-background {
+    width: 100%;
+    max-width: 389px;
+    height: 338px;
+    border-radius: 72px;
+    background-color: #d9d9d9;
+    filter: blur(40px);
+    margin-top: -40px;
+    z-index: -1;
+  }
+  
+  /* Content section */
+  .main-heading {
+    font-size: 24px;
+    font-weight: 700;
+    color: #121111;
+    font-family: "Inter", sans-serif;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .description {
+    font-size: 14px;
+    font-weight: 700;
+    color: #d2caca;
+    font-family: "Roboto", sans-serif;
+    margin-top: 14px;
+    text-align: center;
+  }
+  
+  /* Action section */
+  .login-button-container {
+    width: 100%;
+    max-width: 326px;
+    margin-top: 40px;
+  }
+  
+  .login-button {
+    font-size: 24px;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    height: 68px;
+    border-radius: 100px;
+    background-color: #fc0;
+    border: none;
+    cursor: pointer;
+    text-transform: lowercase;
+  }
+  
+  .register-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 4px;
+  }
+  
+  .register-text {
+    font-size: 14px;
+    color: #b9aeae;
+    font-family: "Roboto", sans-serif;
+  }
+  
+  .register-link {
+    font-size: 14px;
+    color: #1d44cf;
+    font-family: "Roboto", sans-serif;
+    text-decoration: none;
+  }
+  
+  .continue-text {
+    font-size: 14px;
+    color: #737171;
+    font-family: "Roboto", sans-serif;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  /* Media queries */
+  @media (max-width: 640px) {
+    .main-content {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+  

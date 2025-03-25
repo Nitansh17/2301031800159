@@ -1,0 +1,265 @@
+/* Base styles and variables */
+:root {
+    --color-primary: #ffcc00;
+    --color-text-primary: #000000;
+    --color-text-secondary: #989393;
+    --color-text-tertiary: #767171;
+    --color-link: #5a97f2;
+    --color-social-text: #65558f;
+    --color-border: #b2aeae;
+    --color-border-dark: #8e8d8d;
+    --color-divider: #b4b1b1;
+    --color-divider-text: #bcafaf;
+    --font-family-primary: "Roboto", sans-serif;
+    --font-family-secondary: "Righteous", cursive;
+    --font-family-sf: "SF Pro", sans-serif;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: var(--font-family-primary);
+    background-color: #ffffff;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #ffffff;
+    width: 100%;
+  }
+  
+  /* Status Bar */
+  .status-bar {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    padding-top: 21px;
+    align-items: flex-start;
+    background-color: #ffffff;
+  }
+  
+  .status-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 16px;
+  }
+  
+  .status-time {
+    color: var(--color-text-primary);
+    text-align: center;
+    font-family: var(--font-family-sf);
+    font-size: 17px;
+    font-weight: 590;
+    line-height: 22px;
+  }
+  
+  .status-icons {
+    display: flex;
+    width: 124px;
+    height: 10px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .status-levels {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex: 1 0 0;
+  }
+  
+  /* Main Content */
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    margin-top: 20px;
+  }
+  
+  .app-logo {
+    width: 70px;
+    height: 56px;
+    margin-bottom: 6px;
+  }
+  
+  .app-title {
+    color: var(--color-text-primary);
+    text-align: center;
+    font-family: var(--font-family-primary);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 22px;
+    margin-bottom: 30px;
+  }
+  
+  /* Login Container */
+  .login-container {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .login-heading {
+    color: var(--color-text-primary);
+    font-family: var(--font-family-primary);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 22px;
+    margin-bottom: 4px;
+  }
+  
+  .login-subheading {
+    color: var(--color-text-secondary);
+    font-family: var(--font-family-secondary);
+    font-size: 11px;
+    line-height: 22px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Elements */
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    display: block;
+    color: var(--color-text-primary);
+    font-family: var(--font-family-secondary);
+    font-size: 13px;
+    line-height: 22px;
+    margin-bottom: 8px;
+  }
+  
+  .input-underline {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-border);
+  }
+  
+  .form-group:nth-child(2) .input-underline {
+    background-color: var(--color-border-dark);
+  }
+  
+  .forgot-password {
+    display: block;
+    color: var(--color-link);
+    text-align: center;
+    font-family: var(--font-family-primary);
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+  }
+  
+  .login-button {
+    color: #ffffff;
+    text-align: center;
+    font-size: 24px;
+    font-family: var(--font-family-primary);
+    line-height: 20px;
+    width: 100%;
+    height: 43px;
+    border-radius: 100px;
+    background-color: var(--color-primary);
+    margin-bottom: 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .divider-line {
+    height: 1px;
+    flex: 1;
+    background-color: var(--color-divider);
+  }
+  
+  .divider-text {
+    color: var(--color-divider-text);
+    text-align: center;
+    font-family: var(--font-family-primary);
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  .social-login-info {
+    color: var(--color-text-tertiary);
+    font-family: var(--font-family-primary);
+    font-size: 11px;
+    line-height: 22px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Social Buttons */
+  .social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .social-button {
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: 1px solid #79747e;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+  .google-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .facebook-icon-container {
+    margin-right: 10px;
+  }
+  
+  .facebook-icon {
+    width: 14px;
+    height: 24px;
+  }
+  
+  .social-button-text {
+    color: var(--color-social-text);
+    text-align: center;
+    font-family: var(--font-family-primary);
+    font-size: 14px;
+    line-height: 20px;
+  }
+  
+  /* Footer */
+  .app-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 34px;
+    margin-top: auto;
+  }
+  
+  .footer-indicator {
+    width: 144px;
+    height: 5px;
+    border-radius: 100px;
+    background-color: #000000;
+  }
+  

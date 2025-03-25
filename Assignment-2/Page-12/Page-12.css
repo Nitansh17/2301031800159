@@ -1,0 +1,334 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif;
+    background-color: #fff;
+  }
+  
+  .app-container {
+    width: 100%;
+    max-width: 390px;
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
+    background-color: #fff;
+  }
+  
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Status bar */
+  .status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 21px 16px;
+    background-color: #fff;
+  }
+  
+  .time {
+    color: #000;
+    font-family: "SF Pro";
+    font-size: 17px;
+    font-weight: 590;
+  }
+  
+  .status-icons {
+    width: 141px;
+    height: 18px;
+  }
+  
+  /* Content sections */
+  .content {
+    padding-bottom: 70px; /* Space for bottom navigation */
+  }
+  
+  .section-title {
+    color: #000;
+    font-family: "Aleo";
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: normal;
+  }
+  
+  /* Profile section */
+  .profile-section {
+    padding: 20px;
+  }
+  
+  .profile-card {
+    display: flex;
+    align-items: center;
+    border-radius: 58px;
+    padding: 15px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #fdf4f4;
+  }
+  
+  .profile-image {
+    width: 57px;
+    height: 58px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .profile-info {
+    flex: 1;
+  }
+  
+  .profile-name {
+    color: #1f1e1e;
+    font-size: 15px;
+    font-weight: 500;
+  }
+  
+  .profile-email {
+    color: #8b8686;
+    font-family: "Ropa Sans";
+    font-size: 15px;
+  }
+  
+  .edit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .edit-icon {
+    width: 18px;
+    height: 15px;
+  }
+  
+  /* Activity section */
+  .activity-section {
+    padding: 20px;
+  }
+  
+  .activity-card {
+    border-radius: 27px;
+    padding: 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #fdf4f4;
+  }
+  
+  .activity-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .activity-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .bookmark-container {
+    position: relative;
+  }
+  
+  .bookmark-line {
+    position: absolute;
+    top: -10px;
+  }
+  
+  .dots-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 24px;
+    gap: 2px;
+  }
+  
+  .dot-icon {
+    width: 7px;
+    height: 8px;
+  }
+  
+  .activity-details {
+    flex: 1;
+    margin-left: 15px;
+  }
+  
+  .activity-title {
+    color: #484545;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .activity-description {
+    color: #bbb;
+    font-size: 11px;
+  }
+  
+  .arrow-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .arrow-icon {
+    width: 11px;
+    height: 14px;
+  }
+  
+  /* Preference section */
+  .preference-section {
+    padding: 20px;
+  }
+  
+  .preference-card {
+    border-radius: 27px;
+    padding: 20px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #fdf4f4;
+  }
+  
+  .preference-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .preference-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .preference-details {
+    flex: 1;
+    margin-left: 15px;
+  }
+  
+  .preference-title {
+    color: #484545;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .preference-description {
+    color: #bbb;
+    font-size: 11px;
+  }
+  
+  .toggle-switch {
+    width: 24px;
+    height: 10px;
+    border-radius: 10px;
+    position: relative;
+    background-color: #000;
+  }
+  
+  /* Logout section */
+  .logout-section {
+    padding: 20px;
+  }
+  
+  .logout-button {
+    display: flex;
+    align-items: center;
+    border-radius: 51px;
+    padding: 15px;
+    width: 100%;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #fdf4f4;
+  }
+  
+  .logout-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+  }
+  
+  .logout-text {
+    color: #000;
+    font-family: "Roboto Serif";
+    font-size: 18px;
+    margin-left: 10px;
+    flex: 1;
+  }
+  
+  .arrow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Bottom navigation */
+  .bottom-navigation {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px;
+    border-top: 1px solid #c1bcbc;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 390px;
+    background-color: #fff;
+  }
+  
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .nav-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 5px;
+  }
+  
+  .nav-text {
+    color: #bbb;
+    font-size: 12px;
+  }
+  
+  .nav-item.active .nav-text {
+    color: #000;
+  }
+  
+  /* Bottom indicator */
+  .bottom-indicator {
+    width: 144px;
+    height: 5px;
+    border-radius: 100px;
+    margin: 8px auto;
+    background-color: #000;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Media queries */
+  @media (max-width: 640px) {
+    .app-container {
+      width: 100%;
+    }
+  
+    .profile-card,
+    .activity-card,
+    .preference-card {
+      border-radius: 20px;
+      padding: 15px;
+    }
+  
+    .bottom-navigation {
+      padding: 10px;
+    }
+  }
+  
